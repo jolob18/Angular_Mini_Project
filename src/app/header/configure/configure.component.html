@@ -1,0 +1,40 @@
+<div class="configure">
+  <h1>Form Configuration</h1>
+
+  <div class="gridContainer">
+    <div class="gridHeader">
+      <span class="left"><h6>SHOW FIELD</h6></span>
+      <span class="right"><h6>REQUIRED FIELD</h6></span>
+    </div>
+
+    <div
+      #wrapper
+      kendoDragTargetContainer
+      kendoDropTargetContainer
+      dragTargetFilter=".form-body"
+      dropTargetFilter=".form-body"
+      dragTarget=".form-fields"
+      dropTarget=".form-fields"
+      [hint]="{ hintClass: 'rowHint' }"
+      [dragData]="dragData"
+      (onDrop)="onDrop($event)"
+      class="wrapper-container"
+    >
+      <div
+        class="form-body"
+        *ngFor="let field of tempGridData; let i = index"
+        [attr.data-index]="i"
+      >
+        <div class="form-fields">
+          <input type="checkbox" [(ngModel)]="field.firstChecked"  (change)="onFieldToggle(field)"/>
+          <label>{{ field.name }}</label>
+          <input type="checkbox" [(ngModel)]="field.secondChecked" [disabled]="!field.firstChecked" />
+        </div>
+      </div>
+
+      <div class="button-container">
+        <button (click)="saveChanges()" [disabled]="!isAnyFieldSelected()" class="save-btn">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>

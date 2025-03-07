@@ -1,0 +1,72 @@
+
+.register{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+  
+}
+
+h1{
+    margin-bottom: 20px;
+    font-size: 3em;
+
+}
+
+
+
+.example{
+    background-color: white;
+    padding: 25px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+    width: 180px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.k-textbox{
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border:1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+
+
+
+.k-textarea {
+  
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border:1px solid #ccc;
+    border-radius: 5px;   
+    max-width: fit-content;
+}
+
+ button{
+   
+
+    background: black;
+    color: white;
+    border-radius: 5px;
+    max-width: 200px;
+    width: 100%;
+  }
+
+  .k-form-buttons{
+    width: 107%;
+    
+  }
+
+
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 0px;
+}
