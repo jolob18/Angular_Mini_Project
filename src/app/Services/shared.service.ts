@@ -25,6 +25,20 @@ export class SharedService {
   }
 
   private getStoredFormData() {
-    return JSON.parse(localStorage.getItem('formData') || '{"fields": []}');
+    //return JSON.parse(localStorage.getItem('formData') || '{"fields": []}');
+    const storedData = localStorage.getItem('formData');
+
+    if (storedData) {
+      return JSON.parse(storedData);
+    }
+    
+    return {
+      fields: [
+        { name: 'Name', firstChecked: true, secondChecked: true },
+        { name: 'Email', firstChecked: true, secondChecked: true },
+        { name: 'Mobile', firstChecked: true, secondChecked: true },
+        { name: 'Address', firstChecked: true, secondChecked: true }
+      ]
+    };
   }
 }

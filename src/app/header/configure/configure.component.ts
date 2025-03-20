@@ -11,18 +11,25 @@ import { SharedService } from 'src/app/Services/shared.service';
 export class ConfigureComponent {
   public tempGridData: any[] = [];
   public form!: FormGroup;
+  public gridData: any[] = [];
 
   constructor(private sharedService: SharedService, private fb: FormBuilder) {}
 
   ngOnInit() {
-    this.tempGridData = [
+ 
+    const savedData = this.sharedService.getFormData();
+    this.gridData = savedData?.fields?.length ? savedData.fields : [
       { name: 'Name', firstChecked: true, secondChecked: true },
       { name: 'Email', firstChecked: true, secondChecked: true },
       { name: 'Mobile', firstChecked: true, secondChecked: true },
       { name: 'Address', firstChecked: true, secondChecked: true }
     ];
+ 
+    this.tempGridData = JSON.parse(JSON.stringify(this.gridData));
     this.initializeForm();
   }
+
+
 
   initializeForm() {
     const formControls = this.tempGridData.reduce((controls, field) => {
