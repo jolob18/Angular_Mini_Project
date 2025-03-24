@@ -89,19 +89,48 @@
     border: none;
     background: black;
     color: white;
-
+  
     border-radius: 5px;
    
   }
-
- 
- 
+  
+  .save-btn:disabled {
+    background-color: rgba(0, 0, 0, 0.5); 
+    cursor: not-allowed;
+  }
+  
+  
   .left{
-    margin-right: auto; 
+    margin-right: auto;
     padding: 10px;
   }
- 
+  
   .right {
-    margin-left: auto; 
+    margin-left: auto;
     padding: 10px;
-}
+  }
+  
+    
+  .error-message {
+    color: red;
+    font-size: 14px;
+  
+  
+  }
+  
+  .success-toast {
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 18px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    min-width: 250px;
+    max-width: 400px;
+  }
+  
