@@ -16,12 +16,7 @@ import { AppBarModule } from '@progress/kendo-angular-navigation';
 import { ButtonModule } from '@progress/kendo-angular-buttons';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputsModule, FormFieldModule } from '@progress/kendo-angular-inputs';
-
-
-
-
-
-
+import { DisplayDataComponent } from './header/display-data/display-data.component';
 
 
 @NgModule({
@@ -29,7 +24,9 @@ import { InputsModule, FormFieldModule } from '@progress/kendo-angular-inputs';
     AppComponent,
     HeaderComponent,
     RegisterComponent,
-    ConfigureComponent
+    ConfigureComponent,
+    DisplayDataComponent,
+ 
   ],
   imports: [
     BrowserModule,

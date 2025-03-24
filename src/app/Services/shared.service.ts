@@ -5,7 +5,35 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class SharedService {
+  private file: File | null = null;
+  private fileUrl: string | null = null;
+
+  saveFile(file: File) {
+    this.file = file;
+    this.fileUrl = URL.createObjectURL(file); 
+  }
+
+  getFile() {
+    return this.file;
+  }
+
+  getFileUrl() {
+    return this.fileUrl;
+  }
+
+
+
   private formDataSubject = new BehaviorSubject<any>(this.getStoredFormData());
+
+  filetype:string ="";
+
+  setfiletype(type: string ){
+   this.filetype = type;
+  }
+  
+  getfiletype(){
+   return this.filetype;
+  }
 
   get formData$() {
     return this.formDataSubject.asObservable();
@@ -37,7 +65,8 @@ export class SharedService {
         { name: 'Name', firstChecked: true, secondChecked: true },
         { name: 'Email', firstChecked: true, secondChecked: true },
         { name: 'Mobile', firstChecked: true, secondChecked: true },
-        { name: 'Address', firstChecked: true, secondChecked: true }
+        { name: 'Address', firstChecked: true, secondChecked: true },    
+        {name: 'File Upload', firstChecked: true, secondChecked: true }
       ]
     };
   }
