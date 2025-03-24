@@ -12,20 +12,27 @@ export class ConfigureComponent {
   public tempGridData: any[] = [];
   public form!: FormGroup;
   public gridData: any[] = [];
+  
+  selectedValue: string = "Pdf";
+  options: string[] = ['Jpg', 'Pdf', 'Doc'];
 
-  constructor(private sharedService: SharedService, private fb: FormBuilder) {}
+  isFileUploadSelected = true;
+  showError = false;
+
+  constructor(private sharedService: SharedService, private fb: FormBuilder) {
+    
+  }
+
+  
 
   ngOnInit() {
- 
+    
     const savedData = this.sharedService.getFormData();
-    this.gridData = savedData?.fields?.length ? savedData.fields : [
-      { name: 'Name', firstChecked: true, secondChecked: true },
-      { name: 'Email', firstChecked: true, secondChecked: true },
-      { name: 'Mobile', firstChecked: true, secondChecked: true },
-      { name: 'Address', firstChecked: true, secondChecked: true }
-    ];
+    this.gridData = savedData?.fields?.length ? savedData.fields : [];
  
     this.tempGridData = JSON.parse(JSON.stringify(this.gridData));
+
+    
     this.initializeForm();
   }
 
@@ -38,11 +45,17 @@ export class ConfigureComponent {
     }, {} as any);
     this.form = this.fb.group(formControls);
   }
-
+  message: string = ""; ;
   onFieldToggle(field: any) {
     if (!field.firstChecked) {
-      field.secondChecked = false; 
+      field.secondChecked = false;  
     }
+
+    if (field.name === "File Upload") {
+      this.isFileUploadSelected = field.firstChecked;
+    }
+   
+   
   }
    
   isAnyFieldSelected(): boolean {
@@ -51,15 +64,25 @@ export class ConfigureComponent {
 
 
   saveChanges() {
+   
+    if ( !this.selectedValue) {
+      this.showError = true;
+      return;
+    }
+    this.showError = false;
 
     if (!this.isAnyFieldSelected()) {
       alert("Please select at least one field before saving.");
       return;
     }
+    
+    this.sharedService.setfiletype(this.selectedValue);
+
   
     this.sharedService.setFormData({ fields: this.tempGridData });
     this.sharedService.saveFormData();
     this.initializeForm();
+    
     alert('Changes Saved!');
   }
 

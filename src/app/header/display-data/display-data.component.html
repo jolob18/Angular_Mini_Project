@@ -1,0 +1,27 @@
+<div class="success">
+    <h2>Registration Successful!</h2>
+    <p>Welcome {{formData.name}} you have submitted form successfully please review your details submitted.</p>
+  </div>
+  <div  class="table-container">
+  <h2>Submitted Data</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Address</th>
+        <th>File</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr >
+        <td>{{ formData.name }}</td>
+        <td>{{ formData.email }}</td>
+        <td>{{ formData.mobile }}</td>
+        <td>{{ formData.address }}</td>
+        <td> <a *ngIf="fileUrl" [href]="fileUrl" target="_blank">{{ file?.name }}</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

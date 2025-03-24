@@ -36,7 +36,10 @@ h1{
     width: 100%;
 }
 
-
+.k-file-upload{
+    height: 30px;
+    margin-top: 10px;
+}
 
 
 .k-textarea {

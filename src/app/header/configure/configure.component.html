@@ -26,14 +26,37 @@
         [attr.data-index]="i"
       >
         <div class="form-fields">
-          <input type="checkbox" [(ngModel)]="field.firstChecked"  (change)="onFieldToggle(field)"/>
+          <input
+            type="checkbox"
+            [(ngModel)]="field.firstChecked"
+            (change)="onFieldToggle(field)"
+          />
           <label>{{ field.name }}</label>
-          <input type="checkbox" [(ngModel)]="field.secondChecked" [disabled]="!field.firstChecked" />
+          <input
+            type="checkbox"
+            [(ngModel)]="field.secondChecked"
+            [disabled]="!field.firstChecked"
+          />
         </div>
       </div>
 
+      <div class="box">
+        <label for="dropdown">Choose Type</label>
+        <select
+          id="dropdown"
+          [(ngModel)]="selectedValue"
+          [disabled]="!isFileUploadSelected"
+        >
+          <option *ngFor="let option of options" [value]="option">
+            {{ option }}
+          </option>
+        </select>
+      </div>
+        <span *ngIf="showError && isFileUploadSelected" class="error">Please choose a type</span>
+      
+
       <div class="button-container">
-        <button (click)="saveChanges()"  class="save-btn">Save Changes</button>
+        <button (click)="saveChanges()" class="save-btn">Save Changes</button>
       </div>
     </div>
   </div>

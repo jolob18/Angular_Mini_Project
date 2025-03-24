@@ -4,5 +4,6 @@
     <button kendoButton  (click)="showComponent('register')" [ngClass]="{'active-button': activecomponent === 'register'}" >Register</button>
     <button kendoButton (click)="showComponent('configure')"   [ngClass]="{'active-button': activecomponent === 'configure'}"  >Configure</button>  
   </kendo-appbar>
-  <app-register *ngIf="activecomponent === 'register'"></app-register>
+  <app-register *ngIf= "activecomponent === 'register'"  (componentChange)="showComponent($event)"></app-register>
   <app-config *ngIf="activecomponent === 'configure'"></app-config>
+  <app-display-data  *ngIf="activecomponent === 'displayData'" ></app-display-data>

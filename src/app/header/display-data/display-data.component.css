@@ -1,0 +1,24 @@
+.success{
+    text-align: center;
+}
+
+.table-container {
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  tbody tr:hover {
+    background-color: #f2f2f2;
+  }
