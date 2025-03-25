@@ -11,6 +11,8 @@
         <th>Email</th>
         <th>Mobile</th>
         <th>Address</th>
+        <th>Country</th>
+        <th>State</th>
         <th>File</th>
       </tr>
     </thead>
@@ -20,6 +22,8 @@
         <td>{{ formData.email }}</td>
         <td>{{ formData.mobile }}</td>
         <td>{{ formData.address }}</td>
+        <td>{{ formData.country}}</td>
+        <td>{{ formData.state}}</td>
         <td> <a *ngIf="fileUrl" [href]="fileUrl" target="_blank">{{ file?.name }}</a></td>
       </tr>
     </tbody>

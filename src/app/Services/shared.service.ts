@@ -53,7 +53,7 @@ export class SharedService {
   }
 
   private getStoredFormData() {
-    //return JSON.parse(localStorage.getItem('formData') || '{"fields": []}');
+
     const storedData = localStorage.getItem('formData');
 
     if (storedData) {
@@ -66,7 +66,9 @@ export class SharedService {
         { name: 'Email', firstChecked: true, secondChecked: true },
         { name: 'Mobile', firstChecked: true, secondChecked: true },
         { name: 'Address', firstChecked: true, secondChecked: true },    
-        {name: 'File Upload', firstChecked: true, secondChecked: true }
+        { name: 'Country', firstChecked: true, secondChecked: true },
+        { name: 'State', firstChecked: true, secondChecked: true },
+        {name: 'File Upload', firstChecked: true, secondChecked: true },
       ]
     };
   }

@@ -17,6 +17,15 @@ import { ButtonModule } from '@progress/kendo-angular-buttons';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputsModule, FormFieldModule } from '@progress/kendo-angular-inputs';
 import { DisplayDataComponent } from './header/display-data/display-data.component';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { HttpClientModule } from '@angular/common/http';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+
+
+
 
 
 @NgModule({
@@ -38,7 +47,7 @@ import { DisplayDataComponent } from './header/display-data/display-data.compone
     ButtonModule,
     ReactiveFormsModule,
     InputsModule,
-    FormFieldModule
+    FormFieldModule,DropDownsModule,HttpClientModule,BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
