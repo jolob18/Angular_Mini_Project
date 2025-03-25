@@ -62,15 +62,13 @@ export class RegisterComponent {
         validators.push(Validators.maxLength(50));
       } else if (fieldName === 'email') {
         validators.push(Validators.email);
-      }
-      controls['file upload'] = [null, Validators.required]; 
-      
+      } 
+          
       controls[fieldName] = ['', validators];
       return controls;
     }, {} as any);
-
     
- 
+    
     this.form = this.fb.group(formControls);
   }
    
