@@ -1,9 +1,10 @@
 import {  EventEmitter,  Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+
 import { SharedService } from 'src/app/Services/shared.service';
 import { Router } from '@angular/router';
+import { CountryStateService } from 'src/app/Services/country-state.service';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,7 @@ export class RegisterComponent implements OnInit {
   public states: string[] = [];
   public filteredStates: string[] = [];
   private countryStateData: any = [];
-  private apiUrl = 'https://countriesnow.space/api/v0.1/countries/states';
+ 
   public showToast = false;
 
   
@@ -35,7 +36,7 @@ export class RegisterComponent implements OnInit {
 
   @Output() componentChange = new EventEmitter<string>();
 
-  constructor(private sharedService: SharedService, private fb: FormBuilder, private router: Router, private http: HttpClient) {}
+  constructor(private sharedService: SharedService, private fb: FormBuilder, private router: Router, private countryState: CountryStateService) {}
  
   ngOnInit() {
     
@@ -53,20 +54,20 @@ export class RegisterComponent implements OnInit {
 
 
   loadCountryStateData() {
-    this.http.get<any>(this.apiUrl).subscribe(
-      (response) => {
+    this.countryState.loadCountryStateData().subscribe(
+      (response) =>{
         if (!response.error && response.data) {
           this.countryStateData = response.data;
           this.countries = response.data.map((country: any) => country.name);
           this.filteredCountries = [...this.countries];
         } else {
-          console.error("Error fetching countries and states:", response.msg);
+          console.error('Error fetching countries and states:', response.msg);
         }
       },
       (error) => {
-        console.error("Error fetching countries and states:", error);
+        console.error('Error fetching countries and states:', error);
       }
-    );
+    ); 
   }
  
   initializeForm() {
